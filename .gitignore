@@ -1,2 +1,19 @@
 #User files
 Data/*
+
+# Vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+##### MacOS
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
