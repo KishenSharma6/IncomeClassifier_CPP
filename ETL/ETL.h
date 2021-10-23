@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class  ETL {
+class ETL {
 
     std::string name; //name of dataset
     std::string delimiter; // delimiter used by data
@@ -15,6 +15,7 @@ public:
         std::cout << "ETL object created" << std::endl;
     };
 
+    std::vector<std::vector<std::string>> readCSV();
 
 };
 
