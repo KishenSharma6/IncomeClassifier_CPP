@@ -7,7 +7,7 @@
 
 
 std::vector<std::vector<std::string>> ETL::readCSV(){
-
+    //Parse CSV file
     std::ifstream file(dataset);
     std::vector<std::vector<std::string>> dataString;
 
@@ -21,4 +21,13 @@ std::vector<std::vector<std::string>> ETL::readCSV(){
 
     file.close()
     return dataString;
+}
+
+Eigen::MatrixXd ETL::CSVtoEigen(std::vector<std::vector<std::string>> dataset, int cols, int rows){
+    
+    if(header == true){
+        rows =-1;
+    }
+
+    Eigen::MatrixXd mat(cols, rows);
 }
