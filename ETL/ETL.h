@@ -2,6 +2,8 @@
 #define ETL_h
 
 #include <iostream>
+#include <fstream>
+#include <eigen3/Eigen/Dense>
 
 class ETL {
 
@@ -16,6 +18,7 @@ public:
     };
 
     std::vector<std::vector<std::string>> readCSV();
+
 
 };
 

@@ -1,4 +1,4 @@
-#include "ETL/ETL.h"
+#include "ETL.h"
 
 #include <vector>
 #include <stdlib.h>
@@ -19,15 +19,21 @@ std::vector<std::vector<std::string>> ETL::readCSV(){
         dataString.push_back(vec);
     };
 
-    file.close()
+    file.close();
     return dataString;
 }
 
 Eigen::MatrixXd ETL::CSVtoEigen(std::vector<std::vector<std::string>> dataset, int cols, int rows){
-    
     if(header == true){
         rows =-1;
     }
 
-    Eigen::MatrixXd mat(cols, rows);
+    Eigen::MatrixXd mat(rows, cols);
+
+    for(int i= 0; i <rows; i ++){
+        for(int j= 0; j < cols; j++){
+            mat(i,j) = atof(dataset[i][j].c_str());
+        }
+    }
+    return mat;
 }
