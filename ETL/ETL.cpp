@@ -8,7 +8,7 @@
 
 std::vector<std::vector<std::string>> ETL::readCSV(){
     //Parse CSV file
-    std::ifstream file(dataset);
+    std::ifstream file(name);
     std::vector<std::vector<std::string>> dataString;
 
     std::string line= "";
@@ -24,16 +24,22 @@ std::vector<std::vector<std::string>> ETL::readCSV(){
 }
 
 Eigen::MatrixXd ETL::CSVtoEigen(std::vector<std::vector<std::string>> dataset, int cols, int rows){
-    if(header == true){
-        rows =-1;
+    if(header==true){
+        rows =-1; 
     }
 
-    Eigen::MatrixXd mat(rows, cols);
-
-    for(int i= 0; i <rows; i ++){
-        for(int j= 0; j < cols; j++){
-            mat(i,j) = atof(dataset[i][j].c_str());
-        }
+    Eigen::MatrixXd mat(cols, rows); 
+    
+    for(int i = 0;i< rows; i++ ){ 
+        for(int j=0; j < cols; j++){ 
+            mat(j,i) = atof(dataset[i][j].c_str());
     }
-    return mat;
+    }
+    return mat.transpose();
 }
+
+auto ETL::Mean(Eigen::MatrixXd data) -> decltype(data.colwise().mean()){
+    return data.colwise().mean():
+}
+
+auto ETL::Std(Eigen::MatrixXd data) -> decltype(sqrt(data.colwise().mean()))
